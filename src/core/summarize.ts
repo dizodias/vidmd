@@ -1,4 +1,4 @@
-import { toCanonicalYoutubeWatchUrl } from './youtube';
+import { toCanonicalYoutubeWatchUrl } from './youtube.js';
 
 export type AppLanguage = 'en-US' | 'pt-BR';
 
