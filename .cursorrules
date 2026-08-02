@@ -1,0 +1,32 @@
+# Vid.md — Cursor Rules (Absolute)
+
+These rules are mandatory for every future iteration on this codebase.
+
+## Stack
+
+- Use TypeScript strictly. Do not introduce plain JavaScript source files for app logic.
+- Use Tailwind CSS for all UI styling. Prefer utility classes over ad-hoc CSS except for global tokens and Markdown prose.
+
+## Electron Security
+
+- Keep a strict separation between Main Process and Renderer Process.
+- Context Isolation MUST remain enabled (`contextIsolation: true`).
+- `nodeIntegration` MUST remain disabled in the renderer.
+- Never expose Node.js APIs directly to the renderer. Use `preload` + `contextBridge` only.
+- Prefer `sandbox: true` for BrowserWindows unless a concrete, documented exception is required.
+
+## Hybrid Platform Architecture
+
+- Renderer UI must talk only through `src/platform/vidmdClient.ts` (never call `window.vidmd` or raw fetch to summarize APIs from components).
+- Secrets and provider credentials must never ship in the renderer. Keep them in Vercel serverless functions and/or the Electron main process.
+
+## UI Aesthetic
+
+- Any UI code or visual configuration must target a fluid, native macOS aesthetic:
+  rounded corners, subtle glassmorphism, system-like typography, restrained motion, and clean hierarchy.
+- Avoid generic “AI slop” visuals (purple-on-white themes, heavy glow, noisy pill clusters).
+
+## Documentation Language Rule (Strict)
+
+- Whenever you create or update `README.md` or any similar documentation, English and Portuguese translations MUST be integrated together in a single consolidated file.
+- Under no circumstances create separate files per language (e.g. `README.en.md` / `README.pt.md`).
