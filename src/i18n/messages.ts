@@ -11,6 +11,7 @@ export interface Messages {
   errorEmptyUrl: string;
   errorInvalidUrl: string;
   errorSummarizeFailed: string;
+  errorInvalidResponse: string;
   result: string;
   processingVideo: string;
   copy: string;
@@ -37,6 +38,7 @@ const enUS: Messages = {
   errorEmptyUrl: 'Paste a YouTube URL to continue.',
   errorInvalidUrl: 'Enter a valid YouTube URL.',
   errorSummarizeFailed: 'Failed to summarize the video.',
+  errorInvalidResponse: 'Invalid summary API response.',
   result: 'Result',
   processingVideo: 'Processing video…',
   copy: 'Copy',
@@ -63,6 +65,7 @@ const ptBR: Messages = {
   errorEmptyUrl: 'Cole um URL do YouTube para continuar.',
   errorInvalidUrl: 'Informe um URL válido do YouTube.',
   errorSummarizeFailed: 'Falha ao resumir o vídeo.',
+  errorInvalidResponse: 'Resposta inválida da API de resumo.',
   result: 'Resultado',
   processingVideo: 'Processando vídeo…',
   copy: 'Copiar',

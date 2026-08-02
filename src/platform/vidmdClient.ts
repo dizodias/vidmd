@@ -1,3 +1,7 @@
+import {
+  apiErrorMessage,
+  parseAppLanguage,
+} from '../core/summarize';
 import type {
   SummarizePayload,
   SummarizeResponse,
@@ -11,11 +15,18 @@ function isElectronRuntime(): boolean {
 async function summarizeViaHttp(
   payload: SummarizePayload,
 ): Promise<SummarizeResponse> {
-  const response = await fetch('/api/summarize', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+  const language = parseAppLanguage(payload.language);
+
+  let response: Response;
+  try {
+    response = await fetch('/api/summarize', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, language }),
+    });
+  } catch {
+    throw new Error(apiErrorMessage(language, 'summarizeFailed'));
+  }
 
   const data = (await response.json().catch(() => null)) as {
     markdown?: string;
@@ -23,11 +34,13 @@ async function summarizeViaHttp(
   } | null;
 
   if (!response.ok) {
-    throw new Error(data?.error ?? 'Falha ao resumir o vídeo.');
+    throw new Error(
+      data?.error ?? apiErrorMessage(language, 'summarizeFailed'),
+    );
   }
 
   if (!data?.markdown || typeof data.markdown !== 'string') {
-    throw new Error('Resposta inválida da API de resumo.');
+    throw new Error(apiErrorMessage(language, 'invalidResponse'));
   }
 
   return { markdown: data.markdown };

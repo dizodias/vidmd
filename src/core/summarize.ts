@@ -16,21 +16,30 @@ export function parseAppLanguage(value: unknown): AppLanguage {
   return value === 'pt-BR' ? 'pt-BR' : 'en-US';
 }
 
+export type ApiErrorKey =
+  | 'invalidUrl'
+  | 'invalidYoutube'
+  | 'summarizeFailed'
+  | 'methodNotAllowed'
+  | 'invalidResponse';
+
 export function apiErrorMessage(
   language: AppLanguage,
-  key: 'invalidUrl' | 'invalidYoutube' | 'summarizeFailed' | 'methodNotAllowed',
+  key: ApiErrorKey,
 ): string {
-  const en = {
+  const en: Record<ApiErrorKey, string> = {
     invalidUrl: 'Invalid URL.',
     invalidYoutube: 'Enter a valid YouTube URL.',
     summarizeFailed: 'Failed to summarize the video.',
     methodNotAllowed: 'Method not allowed.',
+    invalidResponse: 'Invalid summary API response.',
   };
-  const pt = {
+  const pt: Record<ApiErrorKey, string> = {
     invalidUrl: 'URL inválida.',
     invalidYoutube: 'Informe um URL válido do YouTube.',
     summarizeFailed: 'Falha ao resumir o vídeo.',
     methodNotAllowed: 'Método não permitido.',
+    invalidResponse: 'Resposta inválida da API de resumo.',
   };
 
   return (language === 'pt-BR' ? pt : en)[key];

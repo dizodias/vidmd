@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Plugin } from 'vite';
 import {
@@ -10,6 +11,8 @@ import {
   summarizeVideo,
 } from './src/core/summarize';
 import { isLikelyYoutubeUrl } from './src/core/youtube';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function readJsonBody(req: IncomingMessage): Promise<unknown> {
   return new Promise((resolve, reject) => {

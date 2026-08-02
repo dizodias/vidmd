@@ -85,11 +85,7 @@ async function summarizeViaCloudApi(
   }
 
   if (!data?.markdown || typeof data.markdown !== 'string') {
-    throw new Error(
-      request.language === 'pt-BR'
-        ? 'Resposta inválida da API de resumo.'
-        : 'Invalid summary API response.',
-    );
+    throw new Error(apiErrorMessage(request.language, 'invalidResponse'));
   }
 
   return { markdown: data.markdown };

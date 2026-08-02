@@ -4,8 +4,8 @@ import {
   parseAppLanguage,
   summarizeVideo,
   type SummarizeRequest,
-} from '../src/core/summarize';
-import { isLikelyYoutubeUrl } from '../src/core/youtube';
+} from '../src/core/summarize.js';
+import { isLikelyYoutubeUrl } from '../src/core/youtube.js';
 
 function setCorsHeaders(res: VercelResponse): void {
   res.setHeader('Access-Control-Allow-Origin', '*');
