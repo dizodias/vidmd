@@ -62,7 +62,7 @@ export function apiErrorMessage(
   return (language === 'pt-BR' ? pt : en)[key];
 }
 
-const DEFAULT_GEMINI_MODEL = 'gemini-2.0-flash';
+const DEFAULT_GEMINI_MODEL = 'gemini-3.5-flash';
 
 interface GeminiGenerateResponse {
   candidates?: Array<{
@@ -128,8 +128,11 @@ function mapGeminiFailure(
   }
 
   if (
+    status === 400 ||
     status === 403 ||
     status === 404 ||
+    raw.includes('invalid_argument') ||
+    raw.includes('invalid argument') ||
     raw.includes('not found') ||
     raw.includes('permission') ||
     raw.includes('private') ||

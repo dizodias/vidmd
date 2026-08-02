@@ -45,7 +45,7 @@ npm install
 ```bash
 GEMINI_API_KEY=your_key_here
 # optional
-GEMINI_MODEL=gemini-2.0-flash
+GEMINI_MODEL=gemini-3.5-flash
 ```
 
 3. On Vercel, add the same secrets (Production / Preview):
@@ -151,7 +151,7 @@ npm install
 ```bash
 GEMINI_API_KEY=sua_chave_aqui
 # opcional
-GEMINI_MODEL=gemini-2.0-flash
+GEMINI_MODEL=gemini-3.5-flash
 ```
 
 3. Na Vercel, adicione os mesmos secrets (Production / Preview):

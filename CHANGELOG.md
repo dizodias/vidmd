@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Real YouTube summarization via Google Gemini Free Tier (`GEMINI_API_KEY`)
 - YouTube video id extraction and canonical watch URL helpers
 - Localized API errors for missing key, quota, and unavailable videos
-- Optional `GEMINI_MODEL` override (default `gemini-2.0-flash`)
+- Optional `GEMINI_MODEL` override (default `gemini-3.5-flash`)
 - Vercel function `maxDuration` of 60s for `/api/summarize`
 
 ### Changed
@@ -49,4 +49,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Minimal macOS-inspired UI: YouTube URL input, language selector, Markdown output, copy & export actions
 - App version exposed from main process to renderer via preload bridge
 - Portable packaging targets via electron-builder (`build:mac`, `build:win`)
-- Consolidated bilingual README (English + Português) and project Cursor rules
+- Consolidated bilingual README (English + Português)
