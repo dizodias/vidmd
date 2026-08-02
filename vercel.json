@@ -2,6 +2,11 @@
   "buildCommand": "npm run build:web",
   "outputDirectory": "dist",
   "framework": null,
+  "functions": {
+    "api/summarize.ts": {
+      "maxDuration": 60
+    }
+  },
   "rewrites": [
     {
       "source": "/((?!api/).*)",

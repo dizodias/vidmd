@@ -5,6 +5,22 @@ All notable changes to Vid.md will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-08-02
+
+### Added
+
+- Real YouTube summarization via Google Gemini Free Tier (`GEMINI_API_KEY`)
+- YouTube video id extraction and canonical watch URL helpers
+- Localized API errors for missing key, quota, and unavailable videos
+- Optional `GEMINI_MODEL` override (default `gemini-2.0-flash`)
+- Vercel function `maxDuration` of 60s for `/api/summarize`
+
+### Changed
+
+- Replaced summarization stub with Gemini `generateContent` + YouTube `fileUri`
+- App version bumped to `1.2.0`
+- README documents free AI Studio setup for local and Vercel
+
 ## [1.1.0] — 2026-08-02
 
 ### Added
